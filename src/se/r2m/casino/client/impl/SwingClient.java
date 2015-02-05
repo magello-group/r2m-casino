@@ -46,17 +46,17 @@ public class SwingClient extends JFrame {
        c.fill = GridBagConstraints.HORIZONTAL;
        c.gridx = 0;
        c.gridy = 0;
-       //c.ipady = 40;
+       c.ipadx = 60;
        panel.add(result, c);
 
        for (int i = 1; i<=35; i++) {
            JButton b = new JButton(" " + i + " ");
            b.setVerticalTextPosition(AbstractButton.CENTER);
            b.setHorizontalTextPosition(AbstractButton.LEADING);
+           b.setPreferredSize(new Dimension(700, 30));
            c.gridwidth = 1;
            c.gridx = ((i-1) % 5);
            c.gridy = (i-1) / 5 + 1;
-           //c.ipady = 0;
            panel.add(b, c);
            
            b.addActionListener(new ActionListener() {
@@ -68,7 +68,9 @@ public class SwingClient extends JFrame {
 				int chosenNumber = Integer.valueOf(b.getText().trim());
 				BetResult betresult = client.placeBet(new AccountCredentials() {}, chosenNumber, 1);
 				result.setText(
-						"Winning number was " + 
+						"You played " +
+						betresult.getBetNumber() +
+						". Winning number was " + 
 						betresult.getResultNumber() + 
 						" and you won " +
 						betresult.getBetWin() +
