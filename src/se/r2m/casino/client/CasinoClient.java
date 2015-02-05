@@ -9,7 +9,7 @@ public interface CasinoClient {
 	AccountCredentials login(String username, String password);
 	void logout(AccountCredentials accountCredentials);
 	
-	BetResult placeBet(AccountCredentials accountCredentials, int betInSEK);
+	BetResult placeBet(AccountCredentials accountCredentials, int chosenNumber, int betInSEK);
 	AccountInfo getAccountInfo(AccountCredentials accountCredentials);
 	
 }

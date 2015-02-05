@@ -39,17 +39,14 @@ arkitektur som är skalbar och som säkerställer maximal upptid och säkerhet.
 Du får själv välja hur informationen skickas från klienten till servern,
 men anropet måste gå över nätverket.
 
-Målet är att lösningen ska klara av minst 1000 samtidigt inloggade användare och 
-1000 anrop per sekund med en svarstid på max 3 sekunder.
-
 Förutom själva applikationen bör dokumentation levereras med följande anvisningar:
 
-* Installationsanvisningar för alla komponenter
-* Vald arkitektur för alla komponenter
+* Vald arkitektur
+* Installationsanvisningar för ingående komponenter
 * Information om hur applikationen skalas
 * Information om hur applikationen skall uppgraderas
-* Krav på serverplattformen
 * Krav på klienterna
+* Krav på serverplattformen för att nå målet 1000 samtidiga användare och 10000 spel per sekund
 
 Följande aspekter bör täckas i lösningen:
 
@@ -57,4 +54,19 @@ Följande aspekter bör täckas i lösningen:
 * Scalaablity
 * Security
 * Installationsbarhet
+
+Spelklienten bör implementera interfacet se.r2m.casino.client.CasinoClient.java. Uppdatera
+klassen SwingClient så raden:
+
+	private static CasinoClient casinoClient = new EmptyCasinoClient();
+
+implementerar din klass, tex:
+
+	private static CasinoClient casinoClient = new HenryCasinoClient();
+
+Serverdelen bör implementera interfacet se.r2m.casino.server.RandomGenerator.java
+ 
+Du testar din applikation genom att köra Swing-applikationen som finns i
+
+se.r2m.client.impl.SwingClient
 
